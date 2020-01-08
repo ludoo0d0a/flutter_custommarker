@@ -38,6 +38,8 @@
 **/android/local.properties
 **/android/**/GeneratedPluginRegistrant.java
 
+**/android/**/values/secrets.xml
+
 # iOS/XCode related
 **/ios/**/*.mode1v3
 **/ios/**/*.mode2v3
@@ -65,7 +67,6 @@
 **/ios/ServiceDefinitions.json
 **/ios/Runner/GeneratedPluginRegistrant.*
 
-**/android/app/src/main/res/values/secrets.xml
 
 # Exceptions to above rules.
 !**/ios/**/default.mode1v3

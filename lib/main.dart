@@ -14,6 +14,7 @@ class MapPage extends StatefulWidget {
 class MapPageState extends State<MapPage> {
 
   BitmapDescriptor pinLocationIcon;
+  BitmapDescriptor pinDrivinIcon;
   Set<Marker> _markers = {};
   Completer<GoogleMapController> _controller = Completer();
 
@@ -27,16 +28,20 @@ class MapPageState extends State<MapPage> {
     pinLocationIcon = await BitmapDescriptor.fromAssetImage(
         ImageConfiguration(devicePixelRatio: 2.5),
         'assets/destination_map_marker.png');
+    pinDrivinIcon = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(devicePixelRatio: 2.5),
+        'assets/destination_map_marker.png');
   }
 
   @override
   Widget build(BuildContext context) {
     LatLng pinPosition = LatLng(37.3797536, -122.1017334);
-    
+    LatLng pinDrivinPosition = LatLng(37.376, -122.122);
+
     // these are the minimum required values to set 
     // the camera position 
     CameraPosition initialLocation = CameraPosition(
-        zoom: 16,
+        zoom: 13,
         bearing: 30,
         target: pinPosition
     );
@@ -52,10 +57,18 @@ class MapPageState extends State<MapPage> {
           setState(() {
             _markers.add(
                 Marker(
-                  markerId: MarkerId('<MARKER_ID>'),
-                  position: pinPosition,
-                  icon: pinLocationIcon
+                    markerId: MarkerId('MarkerFrom'),
+                    position: pinPosition,
+                    icon: pinLocationIcon
                 )
+            );
+            _markers.add(
+                Marker(
+                    markerId: MarkerId('MarkerTo'),
+                    position: pinDrivinPosition,
+                    icon: pinDrivinIcon
+                ),
+
             );
           });
       });
